@@ -5,7 +5,6 @@ import com.hdcy.hdcy.pojo.ResponseMassage;
 import com.hdcy.hdcy.pojo.User;
 import com.hdcy.hdcy.pojo.dto.UserDTO;
 import com.hdcy.hdcy.service.IUserService;
-import jakarta.validation.constraints.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
