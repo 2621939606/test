@@ -15,7 +15,7 @@ public class ResponseMassage<T> {
 
     //请求成功
     public static <T>ResponseMassage<T> success(T data) {
-        System.out.print("这是响应返回-->");
+        System.out.print("响应返回-->");
         System.out.println(data);
         return new ResponseMassage(HttpStatus.OK.value(), "success", data);
     }

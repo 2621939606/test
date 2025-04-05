@@ -12,4 +12,24 @@ public interface IUserService {
      * @return
      */
     User add(UserDTO user);
+
+    /**
+     * 通过id查询用户
+     * @param id
+     * @return
+     */
+    User findUserById(Integer id);
+
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+    User editUser(UserDTO user);
+
+    /**
+     * 删除用户
+     * @param userId
+     */
+    void deleteUser(Integer userId);
 }

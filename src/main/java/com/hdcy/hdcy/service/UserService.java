@@ -8,6 +8,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service        // spring的bean
 public class UserService implements IUserService {
 
@@ -22,6 +24,28 @@ public class UserService implements IUserService {
         BeanUtils.copyProperties(user,userPojo);
 
         return userRepository.save(userPojo);
+    }
+
+    @Override
+    public User findUserById(Integer id) {
+        //加了用户不存在的异常处理，如果传入非法数据或者没有查到用户则抛出异常信息
+        //IllegalArgumentException是参数不合法异常
+        return userRepository.findById(id).orElseThrow(() -> {
+            throw new IllegalArgumentException("用户不存在，参数异常！");
+        });
+    }
+
+    @Override
+    public User editUser(UserDTO user) {
+        User userPojo = new User();
+        BeanUtils.copyProperties(user,userPojo);
+        //保存和修改都是调用save
+        return userRepository.save(userPojo);
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        userRepository.deleteById(userId);
     }
 
 }
